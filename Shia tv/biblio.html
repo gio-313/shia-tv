@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html>
+<head>
+   <title>Ma Bibliothèque Electronique</title>
+   <link rel="stylesheet" type="text/css" href="style.css">
+<style>
+body {
+   font-family: Arial, sans-serif;
+   background-color: #f2f2f2;
+   padding: 20px;
+}
+
+h1 {
+   text-align: center;
+   color: #333333;
+}
+
+#books-container {
+   display: flex;
+   justify-content: space-around;
+   flex-wrap: wrap;
+   margin-top: 30px;
+}
+
+.book {
+   width: 200px;
+   padding: 20px;
+   background-color: #ffffff;
+   border-radius: 5px;
+   text-align: center;
+   box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+   margin-bottom: 20px;
+}
+
+.book img {
+   width: 150px;
+   height: 200px;
+   margin: 10px auto;
+   object-fit: cover;
+}
+
+.book h2 {
+   margin-top: 0;
+   color: #333333;
+}
+
+.book p {
+   margin-bottom: 8px;
+   font-size: 14px;
+   color: #666666;
+}
+</style>
+</head>
+<body>
+   <h1>Ma Bibliothèque Electronique</h1>
+
+   <div id="books-container">
+      <div class="book">
+         <h2>Titre du livre 1</h2>
+         <img src="livre1.jpg" alt="Couverture du livre 1">
+         <p>Auteur: Nom de l'auteur 1</p>
+         <p>Date de publication: 2021</p>
+      </div>
+
+      <div class="book">
+         <h2>Titre du livre 2</h2>
+         <img src="livre2.jpg" alt="Couverture du livre 2">
+         <p>Auteur: Nom de l'auteur 2</p>
+         <p>Date de publication: 2020</p>
+      </div>
+      
+      <!-- Ajoute d'autres livres ici -->
+
+   </div>
+
+   <script src="script.js"></script>
+</body>
+</html>
+
+
+<script>
+// On récupère l'élément input pour la recherche
+const input = document.querySelector('#search-input');
+
+// On écoute l'événement "keyup" sur l'input
+input.addEventListener('keyup', () => {
+  // On récupère la valeur de l'input et on la met en minuscules
+  const searchValue = input.value.toLowerCase();
+
+  // On sélectionne tous les livres
+  const books = document.querySelectorAll('.book');
+
+  // On parcourt tous les livres pour les comparer avec la recherche
+  books.forEach(book => {
+    const title = book.querySelector('h2').textContent.toLowerCase();
+    
+    // Si le titre du livre contient la recherche, on l'affiche, sinon on le cache
+    if (title.includes(searchValue)) {
+      book.style.display = 'block';
+    } else {
+      book.style.display = 'none';
+    }
+  });
+});
+
+</script>
